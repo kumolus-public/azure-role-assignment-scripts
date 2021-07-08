@@ -1,0 +1,99 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "actions": {
+      "type": "array",
+      "defaultValue": [
+        "*/read",
+        "Microsoft.Storage/storageAccounts/write",
+        "Microsoft.Storage/storageAccounts/delete",
+	"Microsoft.Storage/storageAccounts/regeneratekey/action",
+	"Microsoft.Storage/storageAccounts/listkeys/action",
+	"Microsoft.CostManagement/exports/*",
+	"Microsoft.CostManagement/views/action",
+	"Microsoft.CostManagement/forecast/action",
+	"Microsoft.CostManagement/reports/action",
+	"Microsoft.CostManagement/query/action",
+	"Microsoft.Compute/virtualMachines/*/action",
+	"Microsoft.Compute/*/delete",
+	"Microsoft.Network/*/delete",
+	"Microsoft.Compute/*/write",
+	"Microsoft.Network/*/write",
+	"Microsoft.DBforMariaDB/servers/*/action",
+	"Microsoft.DBforMariaDB/servers/delete",
+	"Microsoft.DBforMariaDB/servers/write",
+	"Microsoft.DBforMySQL/servers/*/action",
+	"Microsoft.DBforMySQL/servers/delete",
+	"Microsoft.DBforMySQL/servers/write",
+	"Microsoft.DBforMySQL/flexibleServers/delete",
+	"Microsoft.DBforMySQL/flexibleServers/write",
+	"Microsoft.Sql/servers/delete",
+	"Microsoft.Sql/servers/write",
+	"Microsoft.Sql/servers/databases/*/action",
+	"Microsoft.Sql/servers/databases/delete",
+	"Microsoft.Sql/servers/databases/write",
+	"Microsoft.Sql/servers/elasticPools/delete",
+	"Microsoft.Sql/servers/elasticPools/write",
+	"Microsoft.DBforPostgreSQL/servers/delete",
+	"Microsoft.DBforPostgreSQL/servers/write",
+	"Microsoft.DBforPostgreSQL/servers/*/action",
+	"*/register/action"
+      ],
+      "metadata": {
+        "description": "Array of actions for the roleDefinition"
+      }
+    },
+    "notActions": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "Array of notActions for the roleDefinition"
+      }
+    },
+    "roleName": {
+      "type": "string",
+      "defaultValue": "Custom Role",
+      "metadata": {
+        "description": "Friendly name of the role definition"
+      }
+    },
+    "roleDescription": {
+      "type": "string",
+      "defaultValue": "Subscription Level Deployment of a Role Definition",
+      "metadata": {
+        "description": "Detailed description of the role definition"
+      }
+    },
+    "scopes": {
+      "type": "array",
+      "defaultValue": [],
+      "metadata": {
+        "description": "Array of notActions for the roleDefinition"
+      }
+    },
+  },
+  "variables": {
+    "roleDefName": "[guid(subscription().id, string(parameters('actions')), string(parameters('notActions')))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/roleDefinitions",
+      "apiVersion": "2018-07-01",
+      "name": "[variables('roleDefName')]",
+      "properties": {
+        "roleName": "[parameters('roleName')]",
+        "description": "[parameters('roleDescription')]",
+        "type": "customRole",
+        "isCustom": true,
+        "permissions": [
+          {
+            "actions": "[parameters('actions')]",
+            "notActions": "[parameters('notActions')]"
+          }
+        ],
+        "assignableScopes": "[parameters('scopes')]"
+      }
+    }
+  ]
+}
