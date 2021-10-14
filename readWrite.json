@@ -38,7 +38,25 @@
 	"Microsoft.DBforPostgreSQL/servers/delete",
 	"Microsoft.DBforPostgreSQL/servers/write",
 	"Microsoft.DBforPostgreSQL/servers/*/action",
-	"*/register/action"
+	"Microsoft.Cache/redis/read",
+        "Microsoft.DocumentDB/databaseAccounts/services/read",
+        "Microsoft.Web/staticSites/Read",
+        "Microsoft.Web/kubeEnvironments/read",
+        "Microsoft.Kubernetes/connectedClusters/Read",
+        "Microsoft.Kubernetes/RegisteredSubscriptions/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/*/read",
+        "Microsoft.RecoveryServices/*/read",
+        "Microsoft.DocumentDB/cassandraClusters/read",
+        "Microsoft.DocumentDB/cassandraClusters/dataCenters/read",
+        "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/read",
+        "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/*/read",
+        "Microsoft.DesktopVirtualization/applicationgroups/read",
+        "Microsoft.DesktopVirtualization/applicationgroups/*/read",
+        "Microsoft.DesktopVirtualization/hostpools/read",
+        "Microsoft.DesktopVirtualization/hostpools/*/read",
+        "Microsoft.DesktopVirtualization/workspaces/read",
+        "Microsoft.DesktopVirtualization/workspaces/*/read"
       ],
       "metadata": {
         "description": "Array of actions for the roleDefinition"
