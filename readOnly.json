@@ -40,7 +40,8 @@
         "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/read",
         "Microsoft.DesktopVirtualization/applicationgroups/read",
         "Microsoft.DesktopVirtualization/hostpools/read",
-        "Microsoft.DesktopVirtualization/workspaces/read"
+        "Microsoft.DesktopVirtualization/workspaces/read",
+        "Microsoft.Advisor/recommendations/read"
       ],
       "metadata": {
         "description": "Array of actions for the roleDefinition"
