@@ -43,7 +43,10 @@
         "Microsoft.DesktopVirtualization/workspaces/read",
         "Microsoft.Advisor/recommendations/read",
         "Microsoft.Consumption/reservationRecommendations/read",
-        "Microsoft.Consumption/reservationRecommendationDetails/read"
+        "Microsoft.Consumption/reservationRecommendationDetails/read",
+        "Microsoft.Web/sites/read",
+        "Microsoft.Web/serverfarms/read",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "metadata": {
         "description": "Array of actions for the roleDefinition"
